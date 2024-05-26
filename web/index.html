@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="s">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>s</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <script>
+    // Функция для отправки данных в Flutter Web
+    function sendOrientationToFlutter(alpha, beta, gamma) {
+      console.log('Sending orientation data to Flutter:', { alpha, beta, gamma });
+      if (window.parent != null && window.parent.postMessage != null) {
+        window.parent.postMessage({alpha: alpha, beta: beta, gamma: gamma}, '*');
+      }
+    }
+
+    // Обработчик события для отслеживания ориентации устройства
+    window.addEventListener('deviceorientation', function(event) {
+      let alpha = event.alpha; // Угол вращения вокруг оси Z (0-360)
+      let beta = event.beta;   // Угол наклона вперед/назад вокруг оси X (-180 до 180)
+      let gamma = event.gamma; // Угол наклона влево/вправо вокруг оси Y (-90 до 90)
+
+      sendOrientationToFlutter(alpha, beta, gamma);
+    }, true);
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
