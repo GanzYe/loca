@@ -104,6 +104,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: TelegramThemeUtil.getTheme(TelegramWebApp.instance),
       home: Scaffold(
         backgroundColor: Colors.white,
         bottomNavigationBar: SnakeNavigationBar.color(
@@ -211,17 +212,25 @@ class _MyAppState extends State<MyApp> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 16.0,
                     ),
-                    Text('Invite Friends and earn LOCA coins'),
-                    Text(
-                      'get 10 LOCA coins and 10% LOCA coins from each friend.',
-                      style: TextStyle(
-                          color: const Color.fromARGB(255, 65, 63, 63),
-                          fontSize: 12),
+                    const Text(
+                      'Invite your friends and earn LOCA coins',
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                      textAlign: TextAlign.center,
                     ),
-                    SizedBox(
+                    const SizedBox(
+                      width: 250,
+                      child: Text(
+                        'get 10 LOCA coins immediately from each friend and 10% LOCA coins of their earnings.',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 90, 86, 86),
+                            fontSize: 12),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(
                       height: 16.0,
                     ),
                     Padding(
@@ -256,6 +265,8 @@ class _MyAppState extends State<MyApp> {
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor:
                                         const Color.fromARGB(255, 214, 70, 68),
+                                    disabledBackgroundColor:
+                                        Color.fromARGB(255, 97, 96, 96),
                                     shape: const RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(5)),
@@ -284,7 +295,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                         onPressed: () async {
                           telegram.openTelegramLink(
-                              'https://t.me/share/url?url={http://t.me/botLOCAbot/locaapp}');
+                              'https://t.me/share/url?url=http://t.me/botLOCAbot/locaapp');
                         },
                         child: const Text(
                           'Invite Friends',
