@@ -53,10 +53,6 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text('Loca Game'),
-        ),
         body: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Container(
@@ -67,28 +63,26 @@ class _MyAppState extends State<MyApp> {
             child: Column(
               children: [
                 Spacer(),
-                alpha != null
-                    ? Container(
-                        width: 300,
-                        height: 300,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                              color: const Color.fromARGB(255, 214, 70, 68),
-                              width: 5),
-                        ),
-                        child: Center(
-                          child: Transform.rotate(
-                            angle: calculateAngle(alpha!, beta!, gamma!),
-                            child: ImageIcon(
-                              AssetImage('assets/arrow.png'),
-                              size: 150,
-                              color: const Color.fromARGB(255, 214, 70, 68),
-                            ),
-                          ),
-                        ),
-                      )
-                    : Container(),
+                Container(
+                  width: 300,
+                  height: 300,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        color: const Color.fromARGB(255, 214, 70, 68),
+                        width: 5),
+                  ),
+                  child: Center(
+                    child: Transform.rotate(
+                      angle: calculateAngle(10, 10, 10),
+                      child: const ImageIcon(
+                        AssetImage('images/arrow.png'),
+                        size: 150,
+                        color: Color.fromARGB(255, 214, 70, 68),
+                      ),
+                    ),
+                  ),
+                ),
                 Spacer(),
                 Align(
                   alignment: Alignment.bottomCenter,
